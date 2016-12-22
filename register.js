@@ -1,5 +1,5 @@
 var React = require('react');
-var addons = require('@kadira/storybook-addons');
+var addons = require('@kadira/storybook-addons').default;
 var ConfluencePage = require('./ConfluencePage');
 var constants = require('./constants');
 
