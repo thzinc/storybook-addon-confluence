@@ -29,15 +29,27 @@ import 'storybook-addon-confluence/register';
 
 ### Use in stories
 
-Example:
+Use `<WithConfluencePage />` element in a story:
 
 ```
+import { WithConfluencePage } from 'storybook-addon-confluence';
+
 storiesOf('ExampleComponent', module)
   .add('Default', () => (
     <WithConfluencePage space="SPACE" title="Example component">
       <ExampleComponent />
     </WithConfluencePage>
   ));
+```
+
+Or use a decorator for all of the stories:
+
+```
+import { confluencePageDecorator } from 'storybook-addon-confluence';
+
+storiesOf('ExampleComponent', module)
+  .addDecorator(confluencePageDecorator('SPACE', 'Example component'))
+  .add('Default', () => <ExampleComponent />);
 ```
 
 Thanks
