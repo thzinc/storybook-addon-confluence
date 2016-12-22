@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const Readable = require('stream').Readable;
 const tranform = require('./transformer')
 
 module.exports = function buildConfluenceMiddleware(rootUri, username, password) {
@@ -18,7 +19,10 @@ module.exports = function buildConfluenceMiddleware(rootUri, username, password)
         })
         .then(function(json) {
           if (json && json.results && json.results.length) {
-            Buffer.from(json.results[0].body.view.value)
+            const stream = new Readable
+            stream.push(json.results[0].body.view.value)
+            stream.push(null)
+            stream
               .pipe(tranform(rootUri))
               .pipe(res)
           }

@@ -1,13 +1,13 @@
 {
   "name": "storybook-addon-confluence",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Storybook addon to integrate Confluence pages into stories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel James",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "node-fetch": "^1.6.3"
   },
