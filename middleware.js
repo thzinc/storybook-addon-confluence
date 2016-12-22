@@ -1,4 +1,6 @@
 var fetch = require('node-fetch');
+var Readable = require('stream').Readable;
+var absoluteify = require('absoluteify')
 
 module.exports = function buildConfluenceMiddleware(rootUri, username, password) {
   return function(router) {
@@ -17,7 +19,12 @@ module.exports = function buildConfluenceMiddleware(rootUri, username, password)
         })
         .then(function(json) {
           if (json && json.results && json.results.length) {
-            res.send('<html><head><base href="' + rootUri + '"/></head><body>' + json.results[0].body.view.value + '</body></html>');
+            var stream = new Readable();
+            stream.push(json.results[0].body.view.value);
+            stream.push(null);
+            stream
+              .pipe(absoluteify(rootUri))
+              .pipe(res);
           }
 
           res.end();
