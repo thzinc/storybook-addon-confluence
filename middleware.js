@@ -27,8 +27,11 @@ module.exports = function buildConfluenceMiddleware(rootUri, username, password)
               .pipe(res)
           }
           else {
-            res.end()
+            res.status(404).send('Not found');
           }
+        })
+        .catch(function() {
+          res.status(500).send('Something broke!');
         })
     })
   }
