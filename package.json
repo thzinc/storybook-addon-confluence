@@ -1,0 +1,21 @@
+{
+  "name": "storybook-addon-confluence",
+  "version": "1.0.0",
+  "description": "Storybook addon to integrate Confluence pages into stories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel James",
+  "license": "ISC",
+  "devDependencies": {
+    "node-fetch": "^1.6.3"
+  },
+  "peerDependencies": {
+    "react": "^15.3.2"
+  },
+  "dependencies": {
+    "@kadira/storybook-addons": "^1.6.1",
+    "node-fetch": "^1.6.3"
+  }
+}
