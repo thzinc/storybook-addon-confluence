@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-confluence",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Storybook addon to integrate Confluence pages into stories",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,10 @@
   },
   "dependencies": {
     "@kadira/storybook-addons": "^1.6.1",
-    "absoluteify": "^1.0.3",
+    "ap": "~0.2.0",
+    "is-absolute-url": "~2.1.0",
+    "trumpet": "github:bendrucker/node-trumpet#set-attribute-transform",
+    "url-join": "~1.1.0",
     "node-fetch": "^1.6.3"
   },
   "repository": {
