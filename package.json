@@ -17,5 +17,13 @@
   "dependencies": {
     "@kadira/storybook-addons": "^1.6.1",
     "node-fetch": "^1.6.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thzinc/storybook-addon-confluence.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thzinc/storybook-addon-confluence/issues"
+  },
+  "homepage": "https://github.com/thzinc/storybook-addon-confluence#readme"
 }
