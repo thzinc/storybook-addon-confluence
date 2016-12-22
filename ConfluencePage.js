@@ -1,24 +1,27 @@
-import React from 'react';
-import { ADD_PAGE_EVENT } from './constants';
+var React = require('react');
+var ADD_PAGE_EVENT = require('./constants').ADD_PAGE_EVENT;
 
-export default class ConfluencePage extends React.Component {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      text: '',
+module.exports = React.createClass({
+  propTypes: {
+    channel: React.PropTypes.object,
+    api: React.PropTypes.object,
+  },
+
+  getInitialState: function() {
+    return {
+      text: ''
     };
-    this.onAddPage = this.onAddPage.bind(this);
-  }
+  },
 
-  componentDidMount() {
+  componentDidMount: function() {
     const { channel, api } = this.props;
     channel.on(ADD_PAGE_EVENT, x => this.onAddPage(x.space, x.title));
 
     // Clear the current notes on every story change.
     this.stopListeningOnStory = api.onStory(() => this.onAddPage());
-  }
+  },
 
-  componentWillUnmount() {
+  componentWillUnmount: function() {
     if (this.stopListeningOnStory) {
       this.stopListeningOnStory();
     }
@@ -26,9 +29,9 @@ export default class ConfluencePage extends React.Component {
     this.unmounted = true;
     const { channel } = this.props;
     channel.removeListener(ADD_PAGE_EVENT, this.onAddPage);
-  }
+  },
 
-  onAddPage(space, title) {
+  onAddPage: function(space, title) {
     if (space && title) {
       const url = `/confluence/spaces/${encodeURIComponent(space)}/pages/${encodeURIComponent(title)}`;
       fetch(url)
@@ -37,22 +40,12 @@ export default class ConfluencePage extends React.Component {
     } else {
       this.setState({ text: '' });
     }
-  }
+  },
 
-  render() {
+  render: function() {
     const { text } = this.state;
 
-    /* eslint-disable react/no-danger */
-    return (
-      <div>
-        <div dangerouslySetInnerHTML={{ __html: text }} />
-      </div>
-    );
-    /* eslint-enable react/no-danger */
+    return React.createElement('div', null,
+      React.createElement('div', { dangerouslySetInnerHTML: { __html: text }}));
   }
-}
-
-ConfluencePage.propTypes = {
-  channel: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  api: React.PropTypes.object, // eslint-disable-line react/forbid-prop-types
-};
+});
