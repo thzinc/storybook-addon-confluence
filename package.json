@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-confluence",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Storybook addon to integrate Confluence pages into stories",
   "main": "index.js",
   "scripts": {

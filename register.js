@@ -6,9 +6,11 @@ var constants = require('./constants');
 addons.register(constants.PREFIX, (api) => {
   addons.addPanel(constants.PANEL, {
     title: 'Confluence',
-    render: () => React.createElement('ConfluencePage', {
-      channel: addons.getChannel(),
-      api: api
-    })
+    render: function() {
+      return React.createElement(ConfluencePage, {
+        channel: addons.getChannel(),
+        api: api
+      });
+    }
   });
 });
