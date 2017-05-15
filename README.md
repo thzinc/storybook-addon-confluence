@@ -1,7 +1,7 @@
 Confluence integration with Storybook
 =====================================
 
-This addon for [Storybook](http://getstorybook.io) enables you to add Atlassian Confluence pages to your stories.
+This addon for [storybook](https://storybooks.js.org) ([source](https://github.com/storybooks/storybook)) enables you to add Atlassian Confluence pages to your stories.
 
 Usage
 -----
